@@ -5,3 +5,8 @@ description = "Externalizing Maya asset data into deterministic, versionable for
 readme = "README.md"
 requires-python = "==3.10.*"
 dependencies = []
+
+[dependency-groups]
+dev = [
+    "maya-stubs>=0.4.2",
+]
