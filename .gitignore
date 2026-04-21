@@ -1,0 +1,38 @@
+# Python generated files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+*.py[oc]
+
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+
+# IDE / OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Maya
+*.ma~
+*.mb~
+*.mayaSwatches
+
+# Generated data (adjust this later)
+exports/
+data/
+
+# Keep curated examples
+!examples/

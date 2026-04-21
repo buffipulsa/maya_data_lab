@@ -1,0 +1,18 @@
+{
+    "schema_version": 1,
+    "mesh_name": "pPlaneShape1",
+    "topology": {
+        "vertex_count": 4,
+        "face_counts": [4],
+        "face_vertex_indicies": [0,1,2,3]
+    },
+    "uv_sets": [
+        {
+            "uv_set_name": "map1",
+            "u_values": [0.0, 1.0, 1.0, 0.0],
+            "v_values": [0.0, 0.0, 1.0, 1.0],
+            "uv_counts": [4],
+            "uv_indices": [0, 1, 2, 3]
+        }
+    ]
+}
