@@ -1,7 +1,7 @@
 [project]
 name = "maya-data-lab"
 version = "0.1.0"
-description = "Add your description here"
+description = "Externalizing Maya asset data into deterministic, versionable formats."
 readme = "README.md"
 requires-python = "==3.10.*"
 dependencies = []
