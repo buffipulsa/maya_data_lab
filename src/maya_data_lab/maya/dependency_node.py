@@ -6,11 +6,36 @@ import maya.api.OpenMaya as om
 logger = logging.getLogger(__name__)
 
 class DependencyNodeHandle:
-    
-    def __init__(self, node_name: str):
+    """
+    Lightweight wrapper around a Maya dependency node.
+
+    This class resolves a node name into an `MObject` and exposes a corresponding
+    `MFnDependencyNode`, providing a clean and consistent interface for working
+    with Maya nodes using the Python API 2.0.
+
+    This avoids repeated boilerplate when resolving nodes and constructing
+    function sets.
+
+    Parameters
+    ----------
+    node_name : str
+        Name of the Maya node to resolve.
+
+    Raises
+    ------
+    ValueError
+        If the node cannot be resolved.
+        
+    Examples
+    --------
+    >>> node = DependencyNodeHandle("pCube1")
+    >>> node.dependency_fn.name()
+    'pCube1'
+    """
+    def __init__(self, node_name: str) -> None:
         
         if not node_name:
-            raise TypeError('Please specify a node name.')
+            raise ValueError('Please specify a node name.')
         
         logger.debug('Creating DependencyNodeHandle for node "%s"', node_name)
         
@@ -19,24 +44,38 @@ class DependencyNodeHandle:
         
         logger.debug('Resolved DependencyNodeHandle for node "%s"', node_name)
         
-    def _resolve_m_object(self, node_name:str) -> om.MObject:
+    def _resolve_m_object(self, node_name: str) -> om.MObject:
         
         selection_list = om.MSelectionList()
         
         try:
-            m_object = selection_list.add(node_name).getDependNode(0)
+            selection_list.add(node_name).getDependNode(0)
             
-            return m_object
+            return selection_list.getDependNode(0)
         
         except RuntimeError as error:
-            raise ValueError(f'No valid node found for {node_name}') from error
+            raise ValueError(f'No valid node found for "{node_name}"') from error
         
     @property
     def m_object(self) -> om.MObject:
-        
+        """
+        The underlying Maya object.
+
+        Returns
+        -------
+        om.MObject
+            The resolved dependency node.
+        """
         return self._m_object
 
     @property
     def dependency_fn(self) -> om.MFnDependencyNode:
-        
+        """
+        Function set for the dependency node.
+
+        Returns
+        -------
+        om.MFnDependencyNode
+            Function set used to query and edit dependency node attributes.
+        """
         return self._dependency_fn
