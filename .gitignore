@@ -24,11 +24,15 @@ Thumbs.db
 .pytest_cache/
 .coverage
 htmlcov/
+.mypy_cache/
 
 # Maya
 *.ma~
 *.mb~
 *.mayaSwatches
+
+# Sphinx
+docs/build/
 
 # Generated data (adjust this later)
 exports/
@@ -36,3 +40,6 @@ data/
 
 # Keep curated examples
 !examples/
+
+# Env
+.env
