@@ -9,4 +9,5 @@ dependencies = []
 [dependency-groups]
 dev = [
     "maya-stubs>=0.4.2",
+    "sphinx>=8.1.3",
 ]
