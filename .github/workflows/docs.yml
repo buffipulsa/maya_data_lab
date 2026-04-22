@@ -34,8 +34,8 @@ jobs:
         run: uv sync --dev
 
       - name: Build docs
-        run: uv run sphinx-build -M html docs/source docs/build
-
+        run: uv run python -m sphinx -M html docs/source docs/build
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
